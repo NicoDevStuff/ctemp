@@ -1,0 +1,23 @@
+workspace "$PROJECT$"
+   configurations { "Debug", "Release" }
+
+project "$PROJECT$"
+   kind "ConsoleApp"
+   language "C"
+   targetdir "./build/%{cfg.buildcfg}"
+
+   files {
+      "src/*.c",
+
+      "libs/vec/src/vec.c",
+      "libs/vec/src/vec.h"
+   }
+
+   filter "configurations:Debug"
+      defines { "DEBUG" }
+      symbols "On"
+   filter "configurations:Release"
+      defines { "NDEBUG" }
+      optimize "Full"
+   filter { "system:linux", "action:gmake" }
+      buildoptions { "-DBX_CONFIG_DEBUG=1" }
