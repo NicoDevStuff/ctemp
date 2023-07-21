@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
-sudo cp -r $PWD/ /usr/bin/cprojgen/
-sudo cp $PWD/run.sh /usr/local/bin/ctemp
+rm -rf ~/.local/bin/cprojgen/
+cp -r $PWD/ ~/.local/bin/cprojgen/
 
+rm -rf ~/.local/bin/ctemp
+cp $PWD/run.sh ~/.local/bin/ctemp
